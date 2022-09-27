@@ -1,0 +1,5 @@
+
+- name: Setup YUM Repos for Redis
+  ansible.builtin.dnf:
+    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    state: present
