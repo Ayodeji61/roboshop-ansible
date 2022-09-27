@@ -3,3 +3,9 @@
   ansible.builtin.yum:
     name: maven
     state: installed
+
+- name: Import App Pre-Req Task file
+  ansible.builtin.import_tasks: app-prereq.yml
+
+- name: Download Dependencies 
+  ansible.builtin.shell: mvn clean package
