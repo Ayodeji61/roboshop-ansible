@@ -8,12 +8,9 @@
   ansible.builtin.import_tasks: app-prereq.yml
 
 - name: Download Dependencies
-  ansible.builtin.shell: mvn clean package
+  ansible.builtin.shell: mvn clean package && mv target/{{COMPONENT}}-1.0.jar {{COMPONENT}}.jar
+  become_user: roboshop
 
-- name: Make Package
-  ansible.builtin.copy:
-    src: /tmp/target/{{COMPONENT}}-1.0.jar
-    dest: "{{COMPONENT}}.jar"
 
 - name: Import SystemD tasks
   ansible.builtin.import_tasks: systemd.yml
