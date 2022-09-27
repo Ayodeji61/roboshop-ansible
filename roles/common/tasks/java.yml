@@ -7,5 +7,14 @@
 - name: Import App Pre-Req Task file
   ansible.builtin.import_tasks: app-prereq.yml
 
-- name: Download Dependencies 
+- name: Download Dependencies
   ansible.builtin.shell: mvn clean package
+
+- name: Make Package
+  ansible.builtin.copy:
+    src: /tmp/target/{{COMPONENT}}-1.0.jar
+    dest: "{{COMPONENT}}.jar"
+
+- name: Import SystemD tasks
+  ansible.builtin.import_tasks: systemd.yml
+
