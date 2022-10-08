@@ -39,12 +39,12 @@
     filter: version
   ignore_errors: yes
   register: mysql_conn_status
-
 - name: Copy SQL File to reset password
   ansible.builtin.template:
     src: reset-root-pass.sql
     dest: /tmp/reset-root-pass.sql
   when: mysql_conn_status is failed
+
 
 - name: Change the root password
   ansible.builtin.shell: mysql --connect-expired-password -uroot -p"{{ out['content'] | b64decode | regex_findall('temporary password.*') |join(' ')  | split(' ') | last }}" </tmp/reset-root-pass.sql
