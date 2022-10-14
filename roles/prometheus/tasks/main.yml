@@ -32,6 +32,6 @@
 - name: Wait for Alertmanager Service to Start
   ansible.builtin.wait_for:
     host: 0.0.0.0
-    port: 9090
+    port: 9093
     delay: 10
     timeout: 30
