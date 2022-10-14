@@ -19,17 +19,17 @@
     delay: 10
     timeout: 30
 
-- name: Copy Alert Manager configuration
+- name: Copy Alert Manager Configuration
   ansible.builtin.template:
-    dest: /opt/alertmanager/alertmanager.yml
     src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
 
-- name: Restart Prometheus
+- name: Restart Alert Manager
   ansible.builtin.systemd:
     name: alertmanager
     state: restarted
 
-- name: Wait for Alertmanager Service to Start
+- name: Wait for alertmanager Service to Start
   ansible.builtin.wait_for:
     host: 0.0.0.0
     port: 9093
