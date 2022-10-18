@@ -3,7 +3,7 @@ filebeat.inputs:
     id: my-filestream-id
     enabled: false
     paths:
-      - {{ FILEBEAT_INPUT_LOG_FILE }}
+      - {{FILEBEAT_INPUT_LOG_FILE}}
 
 
 output.logstash:
