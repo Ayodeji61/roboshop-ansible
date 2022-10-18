@@ -1,5 +1,5 @@
 - name: Update the Rsyslog configuration file
   ansible.builtin.template:
-    dest: /etc/rsyslog.d/roboshop.cong
+    dest: /etc/rsyslog.d/roboshop.conf
     src: rsyslog.conf
   notify: Restart rsyslog
