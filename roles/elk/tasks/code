@@ -1,0 +1,1 @@
+aws secretsmanager create-secret --name 'ansible' --secret-string 'DevOps321' --tags 'Key=jenkins:credentials:type,Value=usernamePassword' 'Key=jenkins:credentials:username,Value=centos' --description 'Ansible SSH Credentials'
